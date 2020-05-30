@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class VisualizerGUI {
     static JCheckBox[] sortingAlgorithmChoices = new JCheckBox[6];
@@ -31,6 +33,7 @@ public class VisualizerGUI {
         mainTitle.setFont(new Font("Courier", Font.BOLD, 30));
         mainPanel.add(mainTitle);
 
+
         sortingAlgorithmChoices[0] = new JCheckBox(new BubbleSort().toString());
         sortingAlgorithmChoices[1] = new JCheckBox(new HeapSort().toString());
         sortingAlgorithmChoices[2] = new JCheckBox(new InsertionSort().toString());
@@ -42,7 +45,9 @@ public class VisualizerGUI {
         JPanel checkboxPanel = new JPanel(new GridLayout(0,2, 5 , 5));
         checkboxPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
 
+        Listener checkboxListener = new Listener();
         for (JCheckBox checkBox : sortingAlgorithmChoices) {
+            checkBox.addItemListener(checkboxListener);
             checkBox.setAlignmentX(JComponent.CENTER_ALIGNMENT);
             checkboxPanel.add(checkBox);
         }
@@ -57,5 +62,33 @@ public class VisualizerGUI {
 
         mainScreen.setContentPane(mainPanel);
 
+    }
+
+    static class Listener implements ItemListener {
+
+        private final int MAX_SELECTIONS = 2;
+
+        private int selectionCounter = 0;
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            JCheckBox source = (JCheckBox) e.getSource();
+
+            if (source.isSelected()) {
+                selectionCounter++;
+                // check for max selections:
+                if (selectionCounter == MAX_SELECTIONS)
+                    for (JCheckBox box: sortingAlgorithmChoices)
+                        if (!box.isSelected())
+                            box.setEnabled(false);
+            }
+            else {
+                selectionCounter--;
+                // check for less than max selections:
+                if (selectionCounter < MAX_SELECTIONS)
+                    for (JCheckBox box: sortingAlgorithmChoices)
+                        box.setEnabled(true);
+            }
+        }
     }
 }
