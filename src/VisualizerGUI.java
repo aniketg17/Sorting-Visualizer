@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VisualizerGUI {
+    JCheckBox[] sortingAlgorithmChoices = new JCheckBox[6];
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -28,6 +30,8 @@ public class VisualizerGUI {
         mainTitle.setHorizontalAlignment(SwingConstants.CENTER);
         mainTitle.setFont(new Font("Courier", Font.BOLD, 30));
         mainPanel.add(mainTitle);
+
+        JPanel checkboxes = new JPanel(new GridLayout(2,3));
 
 
 

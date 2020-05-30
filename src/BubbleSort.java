@@ -3,4 +3,9 @@ public class BubbleSort extends Sorter {
     public void sort(int[] array) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Bubble Sort";
+    }
 }

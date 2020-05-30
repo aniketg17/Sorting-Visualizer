@@ -3,4 +3,9 @@ public class MergeSort extends Sorter {
     public void sort(int[] array) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Merge Sort";
+    }
 }

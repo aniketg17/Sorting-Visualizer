@@ -12,4 +12,9 @@ public class InsertionSort extends Sorter {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Insertion Sort";
+    }
 }

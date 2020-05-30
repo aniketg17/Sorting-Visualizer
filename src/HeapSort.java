@@ -3,4 +3,9 @@ public class HeapSort extends Sorter {
     public void sort(int[] array) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Heap Sort";
+    }
 }
