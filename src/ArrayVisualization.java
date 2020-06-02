@@ -16,6 +16,8 @@ public class ArrayVisualization extends JPanel {
             array[i] = i;
         }
         shuffleArray();
+        InsertionSort sort = new InsertionSort();
+        sort.sort(array);
     }
 
     public void shuffleArray() {
