@@ -63,7 +63,7 @@ public class MenuGUI {
         JPanel buttonHolder = new JPanel();
         JButton submit = new JButton("Sort!");
         submit.addActionListener(actionEvent -> {
-            ArrayVisualization arrayVisualization = new ArrayVisualization(Color.BLUE);
+            ArrayVisualization arrayVisualization = new ArrayVisualization();
             arrayVisualization.arrayScreen();
         });
 
