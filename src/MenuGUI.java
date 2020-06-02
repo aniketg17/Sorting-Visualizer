@@ -1,26 +1,31 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class VisualizerGUI {
-    static JCheckBox[] sortingAlgorithmChoices = new JCheckBox[6];
+public class MenuGUI {
+    private static JCheckBox[] sortingAlgorithmChoices = new JCheckBox[6];
+    private final static int WIN_WIDTH = 1200;
+    private final static int WIN_HEIGHT = 720;
+
+    public static int getWinWidth() {
+        return WIN_WIDTH;
+    }
+
+    public static int getWinHeight() {
+        return WIN_HEIGHT;
+    }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                mainMenu();
-            }
-        });
+        SwingUtilities.invokeLater(MenuGUI::mainMenu);
     }
 
     public static void mainMenu() {
+
+
         JFrame mainScreen = new JFrame("Sorting Visualizer");
         mainScreen.setLayout(new BorderLayout());
-        mainScreen.setSize(1200, 900);
+        mainScreen.setSize(1200, 720);
         mainScreen.setLocationRelativeTo(null);
         mainScreen.setVisible(true);
         mainScreen.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -57,6 +62,11 @@ public class VisualizerGUI {
 
         JPanel buttonHolder = new JPanel();
         JButton submit = new JButton("Sort!");
+        submit.addActionListener(actionEvent -> {
+            ArrayVisualization arrayVisualization = new ArrayVisualization(Color.BLUE);
+            arrayVisualization.arrayScreen();
+        });
+
         buttonHolder.add(submit);
         mainPanel.add(buttonHolder);
 
@@ -66,14 +76,13 @@ public class VisualizerGUI {
 
     static class Listener implements ItemListener {
 
-        private final int MAX_SELECTIONS = 2;
-
         private int selectionCounter = 0;
 
         @Override
         public void itemStateChanged(ItemEvent e) {
             JCheckBox source = (JCheckBox) e.getSource();
 
+            int MAX_SELECTIONS = 2;
             if (source.isSelected()) {
                 selectionCounter++;
                 // check for max selections:
