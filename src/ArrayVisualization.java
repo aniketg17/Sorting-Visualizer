@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class ArrayVisualization extends JPanel {
     private int[] array;
@@ -14,10 +15,21 @@ public class ArrayVisualization extends JPanel {
         for (int i = 0; i < NUM_BARS; i++) {
             array[i] = i;
         }
+        shuffleArray();
+    }
+
+    public void shuffleArray() {
+        Random rand = new Random();
+        for (int i = 0; i <NUM_BARS ; i++) {
+            int randomNumber = rand.nextInt(NUM_BARS - 1);
+            int temp = array[i];
+            array[i] = array[randomNumber];
+            array[randomNumber] = temp;
+        }
     }
 
     public void arrayScreen() {
-        JFrame frame = new JFrame("Oval Sample");
+        JFrame frame = new JFrame("Sorting Visualizer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setLayout(new BorderLayout());
@@ -27,6 +39,8 @@ public class ArrayVisualization extends JPanel {
 
         frame.setSize(WIN_WIDTH, WIN_HEIGHT);
         frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
     }
 
     @Override
