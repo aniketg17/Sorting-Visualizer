@@ -9,6 +9,13 @@ public class ArrayVisualization extends JPanel {
     private final static int WIN_HEIGHT = 720;
     private static final int NUM_BARS = WIN_WIDTH / BAR_WIDTH;
 
+    public int getArraySize() {
+        return this.array.length;
+    }
+
+    public int getArrayValue(int x) {
+        return this.array[x];
+    }
 
     public ArrayVisualization() {
         array = new int[NUM_BARS];
@@ -16,18 +23,33 @@ public class ArrayVisualization extends JPanel {
             array[i] = i;
         }
         shuffleArray();
-        InsertionSort sort = new InsertionSort();
-        sort.sort(array);
+//        InsertionSort sort = new InsertionSort();
+//        sort.sort(array);
     }
 
     public void shuffleArray() {
         Random rand = new Random();
-        for (int i = 0; i <NUM_BARS ; i++) {
+        for (int i = 0; i < NUM_BARS ; i++) {
             int randomNumber = rand.nextInt(NUM_BARS - 1);
-            int temp = array[i];
-            array[i] = array[randomNumber];
-            array[randomNumber] = temp;
+            delayedSwap(i, randomNumber, 500);
         }
+    }
+
+    public void delayedSwap(int idx1, int idx2, int timeInMs) {
+        int temp = array[idx1];
+        array[idx1] = array[idx2];
+        array[idx2] = temp;
+
+        repaint();
+        sleepFor( 500);
+    }
+
+    public static void sleepFor(long time) {
+        long elapsed;
+        final long startTime = System.nanoTime();
+        do {
+            elapsed = System.nanoTime()-startTime;
+        } while (elapsed < time);
     }
 
     public void arrayScreen() {
