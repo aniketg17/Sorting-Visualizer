@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class ArrayVisualization extends JPanel {
@@ -17,7 +19,7 @@ public class ArrayVisualization extends JPanel {
         return this.array[x];
     }
 
-    public ArrayVisualization() {
+    public ArrayVisualization() throws InterruptedException {
         array = new int[NUM_BARS];
         for (int i = 0; i < NUM_BARS; i++) {
             array[i] = i;
@@ -29,30 +31,41 @@ public class ArrayVisualization extends JPanel {
 
     public void shuffleArray() {
         Random rand = new Random();
-        for (int i = 0; i < NUM_BARS ; i++) {
-            int randomNumber = rand.nextInt(NUM_BARS - 1);
-            delayedSwap(i, randomNumber, 500);
-        }
+
+        Timer timer = new Timer(25, new ActionListener() {
+            private int counter;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int randomNumber = rand.nextInt(NUM_BARS - 1);
+
+                int temp = array[counter];
+                array[counter] = array[randomNumber];
+                array[randomNumber] = temp;
+                repaint();
+                if (counter == NUM_BARS - 1) {
+                    ((Timer)e.getSource()).stop();
+                }
+                counter++;
+            }
+        });
+        timer.start();
     }
 
-    public void delayedSwap(int idx1, int idx2, int timeInMs) {
-        int temp = array[idx1];
-        array[idx1] = array[idx2];
-        array[idx2] = temp;
-
-        repaint();
-        sleepFor( 500);
+    public void delayedSwap(int idx1, int idx2, int timeInMs) throws InterruptedException {
+        Timer timer = new Timer(10000, actionEvent -> {
+            int temp = array[idx1];
+            array[idx1] = array[idx2];
+            array[idx2] = temp;
+            repaint();
+        });
+        timer.setInitialDelay(1000);
+        timer.setRepeats(false);
+        timer.start();
     }
 
-    public static void sleepFor(long time) {
-        long elapsed;
-        final long startTime = System.nanoTime();
-        do {
-            elapsed = System.nanoTime()-startTime;
-        } while (elapsed < time);
-    }
 
-    public void arrayScreen() {
+    public void arrayScreen() throws InterruptedException {
         JFrame frame = new JFrame("Sorting Visualizer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -69,7 +82,7 @@ public class ArrayVisualization extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        Graphics2D graphics = (Graphics2D)g;
+        Graphics2D graphics = (Graphics2D) g;
         super.paintComponent(graphics);
 
 
