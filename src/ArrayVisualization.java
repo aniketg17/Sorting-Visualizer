@@ -10,6 +10,23 @@ public class ArrayVisualization extends JPanel {
     private final static int WIN_WIDTH = 1280;
     private final static int WIN_HEIGHT = 720;
     private static final int NUM_BARS = WIN_WIDTH / BAR_WIDTH;
+    //private static final int SWAP_DELAY = 1;
+
+
+    public void arrayScreen() {
+        JFrame frame = new JFrame("Sorting Visualizer");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setLayout(new BorderLayout());
+
+        ArrayVisualization panel = new ArrayVisualization();
+        frame.add(panel);
+
+        frame.setSize(WIN_WIDTH, WIN_HEIGHT);
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+    }
 
     public int getArraySize() {
         return this.array.length;
@@ -19,20 +36,28 @@ public class ArrayVisualization extends JPanel {
         return this.array[x];
     }
 
-    public ArrayVisualization() throws InterruptedException {
+    public ArrayVisualization() {
         array = new int[NUM_BARS];
         for (int i = 0; i < NUM_BARS; i++) {
             array[i] = i;
         }
         shuffleArray();
-//        InsertionSort sort = new InsertionSort();
-//        sort.sort(array);
+        InsertionSort sort = new InsertionSort();
+        sort.sort(this);
     }
 
     public void shuffleArray() {
         Random rand = new Random();
 
-        Timer timer = new Timer(25, new ActionListener() {
+        for (int i = 0; i < NUM_BARS; i++) {
+            int randIdx = rand.nextInt(NUM_BARS - 1);
+            int temp = array[randIdx];
+            array[randIdx] = array[i];
+            array[i] = temp;
+        }
+        repaint();
+
+ /*       Timer timer = new Timer(1, new ActionListener() {
             private int counter;
 
             @Override
@@ -49,36 +74,43 @@ public class ArrayVisualization extends JPanel {
                 counter++;
             }
         });
-        timer.start();
-    }
-
-    public void delayedSwap(int idx1, int idx2, int timeInMs) throws InterruptedException {
-        Timer timer = new Timer(10000, actionEvent -> {
-            int temp = array[idx1];
-            array[idx1] = array[idx2];
-            array[idx2] = temp;
-            repaint();
-        });
-        timer.setInitialDelay(1000);
-        timer.setRepeats(false);
-        timer.start();
+        timer.start();*/
     }
 
 
-    public void arrayScreen() throws InterruptedException {
-        JFrame frame = new JFrame("Sorting Visualizer");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public void delayedSwap(int idx1, int idx2) {
+        int temp = array[idx1];
+        array[idx1] = array[idx2];
+        array[idx2] = temp;
+        repaint();
 
-        frame.setLayout(new BorderLayout());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException ex) {
+//            Thread.currentThread().interrupt();
+//        }
 
-        ArrayVisualization panel = new ArrayVisualization();
-        frame.add(panel);
+//
 
-        frame.setSize(WIN_WIDTH, WIN_HEIGHT);
-        frame.setVisible(true);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
+
+//        ActionListener a =  new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent actionEvent) {
+//                System.out.println("action performed");
+//                int temp = array[idx1];
+//                array[idx1] = array[idx2];
+//                array[idx2] = temp;
+//                repaint();
+//                ((Timer) actionEvent.getSource()).stop();
+//            }
+//        };
+//
+//        Timer timer = new Timer(1000, a);
+//        timer.start();
+//        timer.removeActionListener(a);
+//        repaint();
     }
+
 
     @Override
     public void paintComponent(Graphics g) {

@@ -17,12 +17,10 @@ public class MenuGUI {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(MenuGUI::mainMenu);
+        MenuGUI menuGUI = new MenuGUI();
     }
 
-    public static void mainMenu() {
-
-
+    public MenuGUI() {
         JFrame mainScreen = new JFrame("Sorting Visualizer");
         mainScreen.setLayout(new BorderLayout());
         mainScreen.setSize(1200, 720);
