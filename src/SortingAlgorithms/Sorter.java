@@ -1,9 +1,14 @@
 package SortingAlgorithms;
 
-import GUI.ArrayVisualization;
+import GUI.SortVisualizer;
 
-public abstract class Sorter {
-    private int arraySize;
-    public abstract void sort(ArrayVisualization array) throws InterruptedException;
-    private String toString;
+/**
+ * Base interface for the sort algorithms
+ * @author Matt Hopson
+ */
+public abstract class Sorter
+{
+    public abstract void sort(SortVisualizer array);
+    public abstract String toString();
+    public abstract long getDelay();
 }
