@@ -27,12 +27,22 @@ public final class Menu extends BaseScreen {
         setUpGUI();
     }
 
+    /**
+     * This method adds checkboxes to the list and finally to the panel
+     * @param algorithm is the algorithm selected by user which is to be visualised
+     * @param panel is the panel to which the checkboxes are to be added.
+     */
+
     private void addCheckBox(Sorter algorithm, JPanel panel) {
         JCheckBox box = new JCheckBox("", true);
         box.setAlignmentX(Component.LEFT_ALIGNMENT);
         checkBoxes.add(new AlgorithmCheckBox(algorithm, box));
         panel.add(box);
     }
+
+    /**
+     * This method has the entire code to generate the menu section
+     */
 
     public void setUpGUI() {
 
@@ -72,12 +82,21 @@ public final class Menu extends BaseScreen {
         add(mainPanel);
     }
 
+    /**
+     * This method overrides the superclass's onOpen and resets its checkboxes
+     * to be unselected
+     */
+
     @Override
     public void onOpen() {
         for (AlgorithmCheckBox checkBox : checkBoxes) {
             checkBox.box.setSelected(false);
         }
     }
+
+    /**
+     * This class essentially is used to maintain list of checkboxes with the corresponding algorithm.
+     */
 
     private static class AlgorithmCheckBox {
         private final Sorter algorithm;

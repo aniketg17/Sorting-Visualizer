@@ -25,7 +25,10 @@ public final class SortRunner extends BaseScreen {
 
     /**
      * This constructor sets the screen and creates the appropriate
-     * instances and assignments.
+     * instances and assignments
+     *
+     * @param algorithms used to contain all the sorting algorithms needed
+     * @param app used to reset and change the screen
      */
 
     public SortRunner(ArrayList<Sorter> algorithms, FrameHandler app) {
