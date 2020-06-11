@@ -23,6 +23,11 @@ public final class SortRunner extends BaseScreen {
     private final SortVisualizer visualize;
     private final ArrayList<Sorter> sortQueue;
 
+    /**
+     * This constructor sets the screen and creates the appropriate
+     * instances and assignments.
+     */
+
     public SortRunner(ArrayList<Sorter> algorithms, FrameHandler app) {
         super(app);
         visualize = new SortVisualizer();
@@ -30,6 +35,11 @@ public final class SortRunner extends BaseScreen {
 
         sortQueue = algorithms;
     }
+
+    /**
+     * This method shuffles all the array values and colors accordingly. It is a helper
+     * method for onOpen()
+     */
 
     private void shuffleAndWait() {
         visualize.shuffle();
@@ -40,6 +50,14 @@ public final class SortRunner extends BaseScreen {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * This method creates independent threads for each
+     * sorting algorithm added to the queue from the menu and
+     * applies the required operations of adding name, coloring
+     * bars, sorting, highlighting at the end, and then resetting
+     * colors
+     */
 
     public void onOpen() {
         SwingWorker swingWorker = new SwingWorker() {
