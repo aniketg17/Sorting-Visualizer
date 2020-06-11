@@ -41,7 +41,6 @@ public final class Menu extends BaseScreen {
         addCheckBox(new HeapSort(), checkboxPanel);
         addCheckBox(new InsertionSort(), checkboxPanel);
         addCheckBox(new MergeSort(), checkboxPanel);
-        addCheckBox(new RadixSort(), checkboxPanel);
         addCheckBox(new RandomizedQuicksort(), checkboxPanel);
 
         mainPanel.add(checkboxPanel);
