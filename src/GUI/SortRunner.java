@@ -11,6 +11,10 @@ import java.util.ArrayList;
  * This project's aim is to visualize different sorting algorithms
  * to provide an intuitive feel for them.
  *
+ * This class creates independent threads to sort
+ * the array and is responsible for running the
+ * visualization processes from the backdrop as needed.
+ *
  * @author Aniket Kumar Gupta
  * @version June 11, 2020
  */

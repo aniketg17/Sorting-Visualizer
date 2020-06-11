@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * This project's aim is to visualize different sorting algorithms
  * to provide an intuitive feel for them.
  *
+ * This class delineates the code for Menu section of the program
+ *
  * @author Aniket Kumar Gupta
  * @version June 11, 2020
  */

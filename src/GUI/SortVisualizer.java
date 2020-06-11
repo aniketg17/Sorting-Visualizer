@@ -10,6 +10,10 @@ import java.util.Random;
  * This project's aim is to visualize different sorting algorithms
  * to provide an intuitive feel for them.
  *
+ * This class is where the GUI section of the visualizer itself
+ * is provided. It draws a canvas and makes appropriate changes on it
+ * depending on the operation needed.
+ *
  * @author Aniket Kumar Gupta
  * @version June 11, 2020
  */
