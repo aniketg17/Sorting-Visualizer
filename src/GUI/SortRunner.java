@@ -5,7 +5,15 @@ import SortingAlgorithms.Sorter;
 import javax.swing.*;
 import java.util.ArrayList;
 
-
+/**
+ * Project : Sorting Visualizer
+ * <p>
+ * This project's aim is to visualize different sorting algorithms
+ * to provide an intuitive feel for them.
+ *
+ * @author Aniket Kumar Gupta
+ * @version June 11, 2020
+ */
 
 public final class SortRunner extends BaseScreen {
     private final SortVisualizer visualize;

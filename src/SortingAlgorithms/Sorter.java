@@ -3,9 +3,16 @@ package SortingAlgorithms;
 import GUI.SortVisualizer;
 
 /**
- * Base interface for the sort algorithms
- * @author Matt Hopson
+ * Project : Sorting Visualizer
+ * <p>
+ * This project's aim is to visualize different sorting algorithms
+ * to provide an intuitive feel for them.
+ *
+ * @author Aniket Kumar Gupta
+ * @version June 11, 2020
  */
+
+
 public abstract class Sorter
 {
     public abstract void sort(SortVisualizer array);

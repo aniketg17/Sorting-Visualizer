@@ -4,6 +4,15 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Project : Sorting Visualizer
+ * <p>
+ * This project's aim is to visualize different sorting algorithms
+ * to provide an intuitive feel for them.
+ *
+ * @author Aniket Kumar Gupta
+ * @version June 11, 2020
+ */
 
 public abstract class BaseScreen extends JPanel {
     protected FrameHandler app;

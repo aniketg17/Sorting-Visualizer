@@ -4,6 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Project : Sorting Visualizer
+ * <p>
+ * This project's aim is to visualize different sorting algorithms
+ * to provide an intuitive feel for them.
+ *
+ * @author Aniket Kumar Gupta
+ * @version June 11, 2020
+ */
+
 public class SortVisualizer extends JPanel {
     public static final int WIN_WIDTH = 1280;
     public static final int WIN_HEIGHT = 720;
