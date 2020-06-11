@@ -19,9 +19,12 @@ import java.util.ArrayList;
 
 public class FrameHandler {
     private final JFrame window;
-
-
     private final ArrayList<BaseScreen> screens;
+
+    /**
+     * This method sets and assigns the appropriate values
+     * and lays out the beginning details such as title etc.
+     */
 
     public FrameHandler() {
         screens = new ArrayList<>();
@@ -30,6 +33,12 @@ public class FrameHandler {
         window.setVisible(true);
         window.setResizable(false);
     }
+
+    /**
+     * This method adds the screen to the list and makes it visible
+     *
+     * @param screen is the screen to be added to the list
+     */
 
     public void pushScreen(BaseScreen screen) {
         if (!screens.isEmpty()) {
@@ -40,6 +49,11 @@ public class FrameHandler {
         window.pack();
         screen.onOpen();
     }
+
+    /**
+     * This method removes the screen from the list and gets the next
+     * one in the list
+     */
 
     public void popScreen() {
         if (!screens.isEmpty()) {
@@ -56,9 +70,17 @@ public class FrameHandler {
         }
     }
 
+    /**
+     * This sets the first screen by adding it to the list
+     */
+
     public void start() {
         pushScreen(new Menu(this));
     }
+
+    /**
+     * main() to start the event dispatch thread
+     */
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new FrameHandler().start());

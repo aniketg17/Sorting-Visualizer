@@ -59,7 +59,7 @@ public final class SortRunner extends BaseScreen {
      * sorting algorithm added to the queue from the menu and
      * applies the required operations of adding name, coloring
      * bars, sorting, highlighting at the end, and then resetting
-     * colors
+     * colors. This blocks the EDT for the aforementioned processes
      */
 
     public void onOpen() {

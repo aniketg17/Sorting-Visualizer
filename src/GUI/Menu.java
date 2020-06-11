@@ -21,6 +21,12 @@ import java.util.ArrayList;
 public final class Menu extends BaseScreen {
     private final ArrayList<AlgorithmCheckBox> checkBoxes;
 
+    /**
+     * This method sets layout for the screen of menu by calling superclass and initializes
+     * the appropriate values.
+     * @param app is the frame to be used by superclass to be set as base screen
+     */
+
     public Menu(FrameHandler app) {
         super(app);
         checkBoxes = new ArrayList<>();

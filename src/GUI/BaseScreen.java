@@ -24,14 +24,30 @@ import java.awt.*;
 public abstract class BaseScreen extends JPanel {
     protected FrameHandler app;
 
+
+    /**
+     * This constructor sets the correct frame
+     * as the base screen
+     * @param app is the frame to be used as base screen
+     */
+
     public BaseScreen(FrameHandler app) {
         this.app = app;
     }
+
+
+    /**
+     * This method returns t
+     */
 
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(SortVisualizer.WIN_WIDTH, SortVisualizer.WIN_HEIGHT);
     }
+
+    /**
+     * abstract method for subclasses to override
+     */
 
     public abstract void onOpen();
 }
