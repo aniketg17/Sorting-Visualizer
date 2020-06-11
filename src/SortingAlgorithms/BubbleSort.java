@@ -7,7 +7,7 @@ public class BubbleSort extends Sorter {
         for (int i = 0; i < array.getArraySize(); i++) {
             for (int j = 0; j < array.getArraySize() - i - 1; j++) {
                 if (array.getArrayValue(j) > array.getArrayValue(j+1)) {
-                    array.swap(j+1, j, 2);
+                    array.swap(j+1, j, 5);
                 }
             }
         }

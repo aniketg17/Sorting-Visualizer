@@ -9,7 +9,7 @@ public class InsertionSort extends Sorter {
             int j = i - 1;
             int key = array.getArrayValue(i);
             while (j >= 0 && array.getArrayValue(j) > key) {
-                array.swap(j, j+1, 2);
+                array.swap(j, j+1, 5);
                 System.out.println("called ");
                 --j;
             }
