@@ -28,6 +28,10 @@ public class SortVisualizer extends JPanel {
     private final int[] barColours;
     private String algorithmName = "";
 
+    /**
+     * Constructor to set values and the background
+     */
+
     public SortVisualizer() {
         setBackground(Color.BLACK);
         array = new int[NUM_BARS];
@@ -38,13 +42,35 @@ public class SortVisualizer extends JPanel {
         }
     }
 
+    /**
+     * This method is a getter for the size of the array
+     *
+     * @return the size of the array
+     */
+
     public int getArraySize() {
         return array.length;
     }
 
+    /**
+     * This method is a getter for the specified array value
+     *
+     * @param index the index of which the value is needed
+     * @return the value at the index in the array
+     */
+
     public int getArrayValue(int index) {
         return array[index];
     }
+
+    /**
+     * This method swaps the array values at the 2 indices
+     * and delays this by sleeping the thread by the specified ms delay.
+     *
+     * @param firstIndex this is the first index in the array to be used for swapping
+     * @param secondIndex this is the second index in the array to be used for swapping
+     * @param millisecondDelay the time delay to be used while sleeping the thread
+     */
 
     public void swap(int firstIndex, int secondIndex, long millisecondDelay) {
         int temp = array[firstIndex];
@@ -62,6 +88,16 @@ public class SortVisualizer extends JPanel {
         }
     }
 
+
+    /**
+     * This method colors a single array bar given the index and reassigns its
+     * value with a delay of the number of ms specified.
+     *
+     * @param index this is the index in the array to be used
+     * @param value the value to be assigned at the index
+     * @param millisecondDelay the time delay to be used while sleeping the thread
+     */
+
     public void updateSingle(int index, int value, long millisecondDelay) {
         array[index] = value;
         barColours[index] = 100;
@@ -73,6 +109,11 @@ public class SortVisualizer extends JPanel {
         }
     }
 
+    /**
+     * This method shuffles the array values by using a
+     * random number generator to swap indices with.
+     */
+
     public void shuffle() {
         Random rng = new Random();
         for (int i = 0; i < getArraySize(); i++) {
@@ -81,6 +122,12 @@ public class SortVisualizer extends JPanel {
         }
     }
 
+    /**
+     * This method highlights the entire array by calling updateSingle
+     * on each array value with a delay. This induces the final effect
+     * post-sorting where the red color goes from left to right.
+     */
+
     public void highlightArray() {
         for (int i = 0; i < getArraySize(); i++) {
             updateSingle(i, getArrayValue(i), 5);
@@ -88,10 +135,20 @@ public class SortVisualizer extends JPanel {
     }
 
 
+
+    /**
+     * Getter for the dimensions of the JFrame
+     */
+
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(WIN_WIDTH, WIN_HEIGHT);
     }
+
+    /**
+     * Rests the colors of the bars and then calls the paintComponent() method
+     * using repaint()
+     */
 
     public void resetColours() {
         for (int i = 0; i < NUM_BARS; i++) {
@@ -100,10 +157,16 @@ public class SortVisualizer extends JPanel {
         repaint();
     }
 
+    /**
+     * Creates the canvas literally with the array values
+     * and sets their color with other helper methods.
+     *
+     * @param graphic It allows us to modify the canvas
+     */
 
     @Override
-    public void paintComponent(Graphics g) {
-        Graphics2D graphics = (Graphics2D) g;
+    public void paintComponent(Graphics graphic) {
+        Graphics2D graphics = (Graphics2D) graphic;
         super.paintComponent(graphics);
 
         graphics.setColor(Color.YELLOW);
@@ -123,6 +186,12 @@ public class SortVisualizer extends JPanel {
             }
         }
     }
+
+    /**
+     * Sets the algorithm's name
+     *
+     * @param algorithmName Name of the algorithm
+     */
 
     public void setName(String algorithmName) {
         this.algorithmName = algorithmName;
